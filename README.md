@@ -1,15 +1,15 @@
 ![comeon-javascript-test-site](example.png)
-# comeon-javascript-test
+# comeon-frontend-test
 
-Applicant's test for Javascript coders.
+Applicant's test for Frontend developers.
 
 ## Assignment Overview
 
-The assignment is to use Javascript to tie together existing HTML and data to create a minimal, working casino website.
+The assignment is to use develop the frontend and tie together existing data to create a minimal, working casino website.
 
 Basic HTML, CSS, images and JSON data is provided, however, feel free to impress by changing and enhancing any of these parts for an even better experience!
 
-Your mission is to provide the Javascript code that makes the parts work as described, below.
+Your mission is to provide the frontend code that makes the parts work as described, below.
 **Feel free to use any other openly available library for validation, templating, dependency injection, etc.**
 
 ## Assignment Criteria
@@ -18,7 +18,7 @@ We want to see how you approach and solve a problem, as well as look at code sty
 Do take your time to do it right, rather than fast.
 Extra effort to improve on the "website" will be noted. :)
 
-While the test is primarily focused on Javascript, by all means use or change the HTML or CSS when that makes sense. We expect the app to be functional across various devices a.k.a responsive.
+While the test is primarily focused on TS (or JS), by all means use or change the HTML or CSS when that makes sense. We expect the app to be functional across various devices a.k.a responsive.
 
 Be prepared to discuss your choices and code when delivered. We would also expect you to answer on how to extend the application to include more features and functionality.
 
@@ -151,8 +151,8 @@ The div with id game-launch will be replaced with an object tag that loads the g
 
 ## More info
 
-- Use of React is encouraged.
-- Use of [jQuery](https://jquery.com/) is discouraged. 
+- Use of React and TS is encouraged.
+- Use of JS and [jQuery](https://jquery.com/) is discouraged. 
 - External libraries used in this test: [Semantic UI](http://semantic-ui.com/), [json-server](https://github.com/typicode/json-server)
 
 ## Found a bug?
