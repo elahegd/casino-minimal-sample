@@ -21,6 +21,7 @@ export const AuthProvider = ({ children }) => {
             const response = await axios.post("http://localhost:3001/login", { username, password });
             if (response.status === 200) {
                 sessionStorage.setItem("authorisedUser", JSON.stringify(response.data));
+                sessionStorage.setItem("username", username);
                 setIsAuthenticated(true);
                 navigate("/games");
             }
@@ -29,8 +30,25 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    const getUserInfo = () => {
+        return JSON.parse(sessionStorage.getItem("authorisedUser"))
+    };
+
+    const logout = async () => {
+        const username = sessionStorage.getItem("username");
+        try {
+            await axios.post("http://localhost:3001/logout", { username });
+            setIsAuthenticated(false);
+            sessionStorage.removeItem("authorisedUser");
+            sessionStorage.removeItem("username");
+            navigate("/login");
+        } catch (error) {
+            console.error("Logout failed", error);
+        }
+    };
+
     return (
-        <AuthContext.Provider value={{ login, isAuthenticated, isLoading }}>
+        <AuthContext.Provider value={{ login, getUserInfo, logout, isAuthenticated, isLoading }}>
             {children}
         </AuthContext.Provider>
     );

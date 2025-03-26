@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useAuth } from "../context/AuthContext";
+import Header from "../components/Header";
 
 const fetchGames = async () => {
     const { data } = await axios.get("http://localhost:3001/games");
@@ -15,6 +17,7 @@ const fetchCategories = async () => {
 const Games = () => {
     const [search, setSearch] = useState("");
     const [selectedCategory, setSelectedCategory] = useState(null);
+    const { getUserInfo, logout } = useAuth();
 
     const { data: games, isLoading: gamesLoading } = useQuery({
         queryKey: ["games"],
@@ -34,25 +37,15 @@ const Games = () => {
         return filteredByKeyword && filteredByCategory;
     });
 
-    console.log('games', filteredGames);
-
     return (
         <>
-            <div className="flex bg-gray-900 text-white">
-                <main className="flex-1 p-6">USer</main>
-                <aside className="p-6 md:size-max w-full md:order-last flex flex-col items-center">
-                    <input
-                        type="text"
-                        placeholder="Search games..."
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                        className="p-2 border border-gray-300 text-gray-50 rounded w-full"
-                    />
-                </aside>
-            </div>
+            <Header 
+                player={getUserInfo().player}
+                search={search}
+                handleSearch={setSearch}
+                logoutUser={() => logout()}
+            />
             <div className="flex flex-col-reverse md:flex-row min-h-screen bg-gray-900 text-white">
-
-
                 <main className="flex-1 p-6">
                     <h1 className="text-2xl font-bold mb-6">Available Games</h1>
 
@@ -76,7 +69,7 @@ const Games = () => {
                         {!filteredGames.length && <p className="text-red-100">There is no game with your keyword!</p>}
                     </div>
                 </main>
-                <aside className="p-6 md:size-max w-full md:order-last flex flex-col items-center">
+                <aside className="p-6 md:size-max w-full md:order-last flex flex-col">
                     <h2 className="text-2xl font-bold mb-6">Categories</h2>
                     <nav className="space-y-4 w-full">
                         {categories.map(category => (
