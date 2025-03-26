@@ -4,6 +4,7 @@ import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import Header from "../components/Header";
 import Category from "../components/Category";
+import { Link } from "react-router-dom";
 
 const fetchGames = async () => {
     const { data } = await axios.get("http://localhost:3001/games");
@@ -40,7 +41,7 @@ const Games = () => {
 
     return (
         <>
-            <Header 
+            <Header
                 player={getUserInfo().player}
                 search={search}
                 handleSearch={setSearch}
@@ -60,18 +61,16 @@ const Games = () => {
                                     <h2 className="text-lg font-semibold">{game.name}</h2>
                                     <p className="text-sm text-gray-300">{game.description}</p>
                                 </div>
-                                <button
-                                    className="mt-4 cursor-pointer bg-green-700 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition"
-                                >
+                                <Link to={`/game/${game.code}`} className="mt-4 cursor-pointer bg-green-700 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition">
                                     Play
-                                </button>
+                                </Link>
                             </div>
                         ))}
                         {!filteredGames.length && <p className="text-red-100">There is no game with your keyword!</p>}
                     </div>
                 </main>
 
-                <Category 
+                <Category
                     categories={categories}
                     handleSelectedCategory={setSelectedCategory}
                 />
