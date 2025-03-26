@@ -1,9 +1,16 @@
 import React from "react";
+import { useAuth } from "../context/AuthContext";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const fetchGames = async () => {
     const { data } = await axios.get("http://localhost:3001/games");
+    return data;
+};
+
+const fetchCategories = async () => {
+    const { data } = await axios.get("http://localhost:3001/categories");
     return data;
 };
 
@@ -13,10 +20,15 @@ const Games = () => {
         queryFn: fetchGames,
     });
 
-    if (gamesLoading) return <p className="text-white">Loading...</p>;
-    // console.log('games', games)
+    const { data: categories, isLoading: categoriesLoading } = useQuery({
+        queryKey: ["categories"],
+        queryFn: fetchCategories,
+    });
+
+    if (gamesLoading || categoriesLoading) return <p className="text-white">Loading...</p>;
+    console.log('games', categories)
     return (
-        <div className="flex min-h-screen bg-gray-900 text-white">
+        <div className="flex flex-col-reverse md:flex-row min-h-screen bg-gray-900 text-white">
             <main className="flex-1 p-6">
                 <h1 className="text-2xl font-bold mb-6">Available Games</h1>
 
@@ -31,7 +43,7 @@ const Games = () => {
                                 <p className="text-sm text-gray-300">{game.description}</p>
                             </div>
                             <button
-                                className="mt-4 bg-green-700 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition"
+                                className="mt-4 cursor-pointer bg-green-700 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition"
                             >
                                 Play
                             </button>
@@ -39,7 +51,14 @@ const Games = () => {
                     ))}
                 </div>
             </main>
-            
+            <aside className="p-6 md:size-max w-full md:order-last flex flex-col items-center">
+                <h2 className="text-2xl font-bold mb-6">Categories</h2>
+                <nav className="space-y-4 w-full">
+                    {categories.map(category => (
+                        <h3 key={category.id} className="block cursor-pointer py-2 px-4 hover:bg-gray-700 rounded">{category.name}</h3>
+                    ))}
+                </nav>
+            </aside>
         </div>
     );
 };
