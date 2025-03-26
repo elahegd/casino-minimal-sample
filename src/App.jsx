@@ -1,11 +1,20 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider, useAuth } from "./context/AuthContext";
 import "./index.css";
 import Login from "./pages/Login";
+import Games from "./pages/Games";
 
 const queryClient = new QueryClient();
+
+const PrivateRoute = ({ children }) => {
+  const { isAuthenticated, isLoading } = useAuth();
+  if (isLoading) {
+    return <div className="flex justify-center items-center h-screen text-white">Loading...</div>;
+  }
+  return isAuthenticated ? children : <Navigate to="/login" />;
+};
 
 function App() {
   return (
@@ -13,6 +22,14 @@ function App() {
       <AuthProvider>
           <Routes>
             <Route path="/login" element={<Login />} />
+            <Route
+              path="/games"
+              element={
+                <PrivateRoute>
+                  <Games />
+                </PrivateRoute>
+              }
+            />
           </Routes>
       </AuthProvider>
     </QueryClientProvider>
