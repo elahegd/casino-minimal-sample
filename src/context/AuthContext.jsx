@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
                 navigate("/games");
             }
         } catch (error) {
-            alert("Invalid username or password");
+            throw new Error(error);
         }
     };
 

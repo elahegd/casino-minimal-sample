@@ -6,15 +6,23 @@ const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
+        setLoading(true);
+
         try {
             await login(username, password);
         } catch {
             setError("Invalid username or password");
+            setPassword("");
+            setUsername("");
+            setTimeout(() => setError(null), 3000);
         }
+
+        setLoading(false);
     };
 
     return (
@@ -36,7 +44,7 @@ const Login = () => {
                             placeholder="Username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
-                            className="w-full px-4 py-2 border border-gray-300 text-gray-50 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 transition" />
+                            className="w-full px-4 py-2 border border-gray-300 text-gray-50 rounded-md focus:outline-none focus:ring-2 transition" />
                     </div>
 
                     <div className="mb-4">
@@ -48,13 +56,16 @@ const Login = () => {
                             placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="w-full px-4 py-2 border border-gray-300 text-gray-50 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 transition" />
+                            className="w-full px-4 py-2 border border-gray-300 text-gray-50 rounded-md focus:outline-none focus:ring-2 transition" />
                     </div>
 
-                    {error && <p className="text-red-500 text-sm">{error}</p>}
+                    {error && <p className="mb-4 text-red-500 text-sm">{error}</p>}
 
-                    <button type="submit" className="w-full cursor-pointer bg-green-700 hover:bg-green-600 text-white font-semibold py-2 rounded-md transition duration-300">
-                        Login
+                    <button 
+                        type="submit" 
+                        disabled={loading} 
+                        className={`w-full cursor-pointer ${loading ? "bg-gray-600" : "bg-green-700 hover:bg-green-600"} text-white font-semibold py-2 rounded-md transition duration-300`}>
+                        {loading ? "Logging in..." : "Login"}
                     </button>
                 </form>
             </div>

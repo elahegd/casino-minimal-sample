@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function GameItem({ game }) {
     return (
         <div className="flex flex-col items-center bg-gray-800 p-4 rounded-lg shadow-lg">
-            <div className="w-100 h-40">
+            <div className="w-100 h-40 sm:w-60">
                 <img className="img-responsive mb-4" src={game.icon} alt={game.name} />
             </div>
             <div className="text-center">

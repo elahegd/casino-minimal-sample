@@ -21,7 +21,7 @@ export default function Header({ player, handleSearch, search, logoutUser }) {
                     placeholder="Search games..."
                     value={search}
                     onChange={(e) => handleSearch(e.target.value)}
-                    className="p-2 border border-gray-300 text-gray-50 rounded w-full"
+                    className="w-full px-4 py-2 border border-gray-300 text-gray-50 rounded-md focus:outline-none focus:ring-2 transition"
                 />
             </aside>
         </div>
