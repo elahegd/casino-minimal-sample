@@ -53,7 +53,7 @@ const Login = () => {
 
                     {error && <p className="text-red-500 text-sm">{error}</p>}
 
-                    <button type="submit" className="w-full bg-green-700 hover:bg-green-600 text-white font-semibold py-2 rounded-md transition duration-300">
+                    <button type="submit" className="w-full cursor-pointer bg-green-700 hover:bg-green-600 text-white font-semibold py-2 rounded-md transition duration-300">
                         Login
                     </button>
                 </form>
