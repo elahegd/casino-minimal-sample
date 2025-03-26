@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import Header from "../components/Header";
+import Category from "../components/Category";
 
 const fetchGames = async () => {
     const { data } = await axios.get("http://localhost:3001/games");
@@ -69,17 +70,11 @@ const Games = () => {
                         {!filteredGames.length && <p className="text-red-100">There is no game with your keyword!</p>}
                     </div>
                 </main>
-                <aside className="p-6 md:size-max w-full md:order-last flex flex-col">
-                    <h2 className="text-2xl font-bold mb-6">Categories</h2>
-                    <nav className="space-y-4 w-full">
-                        {categories.map(category => (
-                            <h3
-                                key={category.id}
-                                onClick={() => setSelectedCategory(category.id)}
-                                className="block cursor-pointer py-2 px-4 hover:bg-gray-700 rounded">{category.name}</h3>
-                        ))}
-                    </nav>
-                </aside>
+
+                <Category 
+                    categories={categories}
+                    handleSelectedCategory={setSelectedCategory}
+                />
             </div>
         </>
     );
