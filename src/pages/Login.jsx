@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import Logo from "../assets/logo.svg";
 
 const Login = () => {
     const { login } = useAuth();
@@ -29,7 +30,7 @@ const Login = () => {
         <div className="flex max-w-dvw items-center justify-center min-h-screen bg-gray-900 px-4">
             <div className="w-full max-w-md p-8 bg-gray-800 rounded-lg shadow-lg">
                 <div className="flex justify-center mb-6">
-                    <img src="../logo.svg" alt="Logo" className="w-32 h-auto rounded-lg" />
+                    <img src={Logo} alt="Logo" className="w-32 h-auto" />
                 </div>
 
                 <h2 className="text-2xl font-bold text-center text-gray-50 mb-6">Login</h2>

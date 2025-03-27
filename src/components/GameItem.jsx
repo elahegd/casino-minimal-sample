@@ -21,8 +21,8 @@ export default function GameItem({ game }) {
 
     return (
         <div className="relative flex flex-col sm:flex-row items-center sm:items-start bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 w-full max-w-4xl mx-auto">
-            <div className="aspect-square w-32 sm:w-40 overflow-hidden rounded-xl border-2 border-gray-700 flex-shrink-0">
-                <img className="w-full h-full object-cover" src={game.icon} alt={game.name} />
+            <div className="aspect-square w-32 flex items-center sm:w-40 overflow-hidden rounded-xl border-2 border-gray-700 flex-shrink-0">
+                <img className="w-auto max-h-32" src={game.icon} alt={game.name} />
             </div>
 
             <div className="sm:ml-6 mt-4 sm:mt-0 flex-1 text-left w-full">
