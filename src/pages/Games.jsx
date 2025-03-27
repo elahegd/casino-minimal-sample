@@ -34,7 +34,7 @@ const Games = () => {
     if (gamesLoading || categoriesLoading) return <p className="text-white">Loading...</p>;
 
     const filteredGames = games.filter(game => {
-        const filteredByKeyword = game.name.toLowerCase().includes(search.toLowerCase());
+        const filteredByKeyword = game.name.toLowerCase().includes(search.toLowerCase()) || game.description.toLowerCase().includes(search.toLowerCase()) ;
         const filteredByCategory = selectedCategory === null || game.categoryIds.includes(selectedCategory);
         return filteredByKeyword && filteredByCategory;
     });
