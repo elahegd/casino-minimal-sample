@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ArrowDown from "../assets/arrow-down.svg";
 import ArrowUp from "../assets/arrow-up.svg";
@@ -41,6 +41,7 @@ export default function GameItem({ game }) {
                     <button
                         onClick={toggleExpand}
                         className="flex items-center cursor-pointer text-green-400 mt-2 hover:underline text-sm"
+                        data-testid={`collapse-btn-${game.code}`}
                     >
                         {isExpanded ? 'Show Less' : 'Read More'}
                         <img
@@ -54,6 +55,7 @@ export default function GameItem({ game }) {
                 <Link 
                     to={`/game/${game.code}`} 
                     className="inline-flex items-center cursor-pointer gap-2 mt-4 bg-green-600 hover:bg-green-500 text-white px-5 py-2 rounded-full text-sm font-medium transition-all shadow-md"
+                    data-testid={`play-btn-${game.code}`}
                 >
                     <span>Play</span>
                     <img src={ArrowRight} alt="arrow right" className="w-4 h-4" />

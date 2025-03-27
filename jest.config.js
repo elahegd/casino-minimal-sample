@@ -10,4 +10,8 @@ export default {
   },
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
   setupFilesAfterEnv: ['@testing-library/jest-dom'],
+  setupFiles: ['<rootDir>/jest.setup.js'],
+  moduleNameMapper: {
+    '\\.(svg|jpg|jpeg|png|gif)$': '<rootDir>/__mocks__/fileMock.js',
+  },
 }
