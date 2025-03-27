@@ -1,17 +1,17 @@
 import React from 'react'
 
-export default function Category({ categories, handleSelectedCategory }) {
+export default function Category({ categories, handleSelectedCategory, selectedCategory }) {
     return (
-        <aside className="p-6 md:size-max w-full md:order-last flex flex-col">
-            <h2 className="text-2xl font-bold mb-6">Categories</h2>
-            <nav className="space-y-4 w-full">
-                {categories.map(category => (
-                    <h3
-                        key={category.id}
-                        onClick={() => handleSelectedCategory(category.id)}
-                        className="block cursor-pointer py-2 px-4 hover:bg-gray-700 rounded">{category.name}</h3>
-                ))}
-            </nav>
-        </aside>
+        <div className="md:size-max w-full flex gap-4 flex-wrap md:flex-2">
+            {categories.map(category => (
+                <h3
+                    key={category.id}
+                    onClick={() => handleSelectedCategory(category.id)}
+                    className={`cursor-pointer mb-0 inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium transition-all shadow-md
+                        ${selectedCategory === category.id ? 'bg-green-600' : 'bg-gray-800'}
+                        hover:bg-green-600 text-white`}
+                    >{category.name}</h3>
+            ))}
+        </div>
     )
 }

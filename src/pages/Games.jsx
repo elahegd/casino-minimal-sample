@@ -5,6 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import Header from "../components/Header";
 import Category from "../components/Category";
 import GameList from "../components/GameList";
+import Search from "../components/Search";
 
 const fetchGames = async () => {
     const { data } = await axios.get("http://localhost:3001/games");
@@ -34,7 +35,7 @@ const Games = () => {
     if (gamesLoading || categoriesLoading) return <p className="text-white">Loading...</p>;
 
     const filteredGames = games.filter(game => {
-        const filteredByKeyword = game.name.toLowerCase().includes(search.toLowerCase()) || game.description.toLowerCase().includes(search.toLowerCase()) ;
+        const filteredByKeyword = game.name.toLowerCase().includes(search.toLowerCase()) || game.description.toLowerCase().includes(search.toLowerCase());
         const filteredByCategory = selectedCategory === null || game.categoryIds.includes(selectedCategory);
         return filteredByKeyword && filteredByCategory;
     });
@@ -43,17 +44,20 @@ const Games = () => {
         <>
             <Header
                 player={getUserInfo().player}
-                search={search}
-                handleSearch={setSearch}
                 logoutUser={() => logout()}
             />
-            <div className="flex flex-col-reverse md:flex-row min-h-screen bg-gray-900 text-white">
-                <GameList games={filteredGames} />
+            <div className="p-6 bg-gray-900 text-white flex gap-6 items-center flex-col md:flex-row">
+                <Search search={search}
+                    handleSearch={setSearch} />
 
                 <Category
                     categories={categories}
                     handleSelectedCategory={setSelectedCategory}
+                    selectedCategory={selectedCategory}
                 />
+            </div>
+            <div className="flex flex-col-reverse md:flex-row min-h-screen bg-gray-900 text-white">
+                <GameList games={filteredGames} />
             </div>
         </>
     );
