@@ -5,6 +5,7 @@ import { AuthProvider, useAuth } from "./context/AuthContext";
 import "./index.css";
 import Login from "./pages/Login";
 import Games from "./pages/Games";
+import GamePlay from "./pages/GamePlay";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,14 @@ function App() {
               element={
                 <PrivateRoute>
                   <Games />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/game/:gameCode"
+              element={
+                <PrivateRoute>
+                  <GamePlay />
                 </PrivateRoute>
               }
             />
