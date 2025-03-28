@@ -5,22 +5,24 @@ Applicant's test for Frontend developers.
 
 ## Important Updates
 
-- The file format for `mock-api.js` has been updated to `mock-api.cjs` due to a command execution error.  
+The file format for `mock-api.js` has been updated to `mock-api.cjs` due to a command execution error.  
   **Use this command to run the mock API:**
-  ```sh
-  json-server --watch mock/mock-data.json --port 3001 --middlewares mock/mock-api.cjs
-```
-- The API for loading games appears to have a CloudFront issue (403 error).
-- To run the project, follow these steps:
-```sh
-npm install
-npm run start
-```
-- To un test use this command:
-```sh
-    npm run test
-    ```
 
+  ```javascript
+    json-server --watch mock/mock-data.json --port 3001 --middlewares mock/mock-api.cjs
+  ```
+
+The API for loading games appears to have a CloudFront issue (403 error).
+
+To run the project, follow these steps:
+```javascript
+    npm install
+    npm run start
+```
+To un test use this command:
+```javascript
+    npm run test
+```
 
 ## Assignment Overview
 
