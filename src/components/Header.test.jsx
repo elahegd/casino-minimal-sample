@@ -12,7 +12,7 @@ const mockPlayer = {
 const mockLogoutUser = jest.fn();
 
 describe("Header Component", () => {
-  test("renders player avatar and name", () => {
+  it("renders player avatar and name", () => {
     render(
       <Router>
         <Header player={mockPlayer} logoutUser={mockLogoutUser} />
@@ -26,7 +26,7 @@ describe("Header Component", () => {
     expect(playerName).toBeInTheDocument();
   });
 
-  test("toggles dropdown when clicking on player button", () => {
+  it("toggles dropdown when clicking on player button", () => {
     render(
       <Router>
         <Header player={mockPlayer} logoutUser={mockLogoutUser} />
@@ -44,7 +44,7 @@ describe("Header Component", () => {
     expect(screen.queryByText(mockPlayer.event)).not.toBeInTheDocument();
   });
 
-  test("closes dropdown when clicking outside", () => {
+  it("closes dropdown when clicking outside", () => {
     render(
       <Router>
         <Header player={mockPlayer} logoutUser={mockLogoutUser} />
@@ -58,7 +58,7 @@ describe("Header Component", () => {
     expect(screen.queryByText(mockPlayer.event)).not.toBeInTheDocument();
   });
 
-  test("calls logout function when logout button is clicked", () => {
+  it("calls logout function when logout button is clicked", () => {
     render(
       <Router>
         <Header player={mockPlayer} logoutUser={mockLogoutUser} />

@@ -19,7 +19,7 @@ const mockGames = [
 ];
 
 describe("GameList Component", () => {
-  test("renders the title correctly", () => {
+  it("renders the title correctly", () => {
     render(
       <Router>
         <GameList games={mockGames} />
@@ -30,7 +30,7 @@ describe("GameList Component", () => {
     expect(title).toBeInTheDocument();
   });
 
-  test("renders correct number of GameItem components when games are provided", () => {
+  it("renders correct number of GameItem components when games are provided", () => {
     render(
       <Router>
         <GameList games={mockGames} />
@@ -44,7 +44,7 @@ describe("GameList Component", () => {
     expect(game2).toBeInTheDocument();
   });
 
-  test("shows the 'not found' message when game list is empty", () => {
+  it("shows the 'not found' message when game list is empty", () => {
     render(
       <Router>
         <GameList games={[]} />

@@ -35,13 +35,13 @@ const Login = () => {
 
                 <h2 className="text-2xl font-bold text-center text-gray-50 mb-6">Login</h2>
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} data-testid="login-form">
                     <div className="mb-4">
                         <label className="block text-gray-100 font-medium mb-1" htmlFor="username">User Name</label>
                         <input
                             type="text"
                             name="username"
-                            id="username"
+                            data-testid="username"
                             placeholder="Username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
@@ -51,7 +51,7 @@ const Login = () => {
                     <div className="mb-4">
                         <label className="block text-gray-100 font-medium mb-1" htmlFor="password">Password</label>
                         <input
-                            id="password"
+                            data-testid="password"
                             name="password"
                             type="password"
                             placeholder="Password"
@@ -60,7 +60,7 @@ const Login = () => {
                             className="w-full px-4 py-2 border border-gray-300 text-gray-50 rounded-md focus:outline-none focus:ring-2 transition" />
                     </div>
 
-                    {error && <p className="mb-4 text-red-500 text-sm">{error}</p>}
+                    {error && <p data-testid="error-text" className="mb-4 text-red-500 text-sm">{error}</p>}
 
                     <button 
                         type="submit" 

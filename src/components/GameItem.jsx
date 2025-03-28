@@ -30,7 +30,7 @@ export default function GameItem({ game }) {
 
                 <div
                     className={`overflow-hidden transition-[max-height] duration-500 ease-in-out`}
-                    style={{ maxHeight: isExpanded ? `${contentHeight}px` : '3.5rem' }}
+                    style={{ maxHeight: isExpanded ? `${contentHeight}px` : "3.5rem" }}
                 >
                     <p ref={contentRef} className="text-sm text-gray-300">
                         {game.description}
@@ -43,7 +43,7 @@ export default function GameItem({ game }) {
                         className="flex items-center cursor-pointer text-green-400 mt-2 hover:underline text-sm"
                         data-testid={`collapse-btn-${game.code}`}
                     >
-                        {isExpanded ? 'Show Less' : 'Read More'}
+                        {isExpanded ? "Show Less" : "Read More"}
                         <img
                             src={isExpanded ? ArrowUp : ArrowDown}
                             alt="toggle icon"
