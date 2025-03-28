@@ -19,7 +19,7 @@ export default function Header({ player, logoutUser }) {
 
     return (
         <div className="flex flex-row bg-gray-900 text-white">
-            <main className="flex-1 p-6">
+            <div className="flex-1 p-6">
                 <div className="relative inline-block" ref={dropdownRef}>
                     <button
                         onClick={() => setShowDropdown(prev => !prev)}
@@ -49,13 +49,13 @@ export default function Header({ player, logoutUser }) {
                         </div>
                     )}
                 </div>
-            </main>
+            </div>
 
-            <aside className="p-6 size-max">
+            <div className="p-6 size-max">
                 <div className="w-full">
                     <img src={Logo} alt="logo" className="w-50 h-auto" />
                 </div>
-            </aside>
+            </div>
         </div>
     );
 }
