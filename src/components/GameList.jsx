@@ -4,7 +4,7 @@ import GameItem from './GameItem';
 export default function GameList({ games }) {
     return (
         <main className="flex-1 p-6">
-            <h1 className="text-2xl font-bold mb-6">Available Games</h1>
+            <h1 className="text-2xl font-bold mb-6">Games</h1>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {games.map((game, idx) => (

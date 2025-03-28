@@ -26,7 +26,7 @@ export default function GameItem({ game }) {
             </div>
 
             <div className="sm:ml-6 mt-4 sm:mt-0 flex-1 text-left w-full">
-                <h2 className="text-xl font-bold text-white mb-1 break-words">{game.name}</h2>
+                <h2 data-testid={`game-title-${game.code}`} className="text-xl font-bold text-white mb-1 break-words">{game.name}</h2>
 
                 <div
                     className={`overflow-hidden transition-[max-height] duration-500 ease-in-out`}
