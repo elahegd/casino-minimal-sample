@@ -30,7 +30,7 @@ export default function GameItem({ game }) {
 
                 <div
                     className={`overflow-hidden transition-[max-height] duration-500 ease-in-out`}
-                    style={{ maxHeight: isExpanded ? `${contentHeight}px` : "3.5rem" }}
+                    style={{ maxHeight: isExpanded ? `${contentHeight}px` : "1.5rem" }}
                 >
                     <p ref={contentRef} className="text-sm text-gray-300">
                         {game.description}
@@ -57,7 +57,7 @@ export default function GameItem({ game }) {
                     className="inline-flex items-center cursor-pointer gap-2 mt-4 bg-green-600 hover:bg-green-500 text-white px-5 py-2 rounded-full text-sm font-medium transition-all shadow-md"
                     data-testid={`play-btn-${game.code}`}
                 >
-                    <span>Play</span>
+                    <span>More info</span>
                     <img src={ArrowRight} alt="arrow right" className="w-4 h-4" />
                 </Link>
             </div>

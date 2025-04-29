@@ -43,7 +43,7 @@ const Games = () => {
     return (
         <>
             <Header
-                player={getUserInfo().player}
+                player={getUserInfo()}
                 logoutUser={() => logout()}
             />
             <div className="p-6 bg-gray-900 text-white flex gap-6 items-center flex-col md:flex-row">

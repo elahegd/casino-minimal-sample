@@ -53,7 +53,7 @@ export default function Header({ player, logoutUser }) {
 
             <div className="p-6 size-max">
                 <div className="w-full">
-                    <img src={Logo} alt="logo" className="w-50 h-auto" />
+                    <h2 className="font-bold text-2xl">Games Logo</h2>
                 </div>
             </div>
         </div>
