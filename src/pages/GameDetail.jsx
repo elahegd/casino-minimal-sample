@@ -14,7 +14,7 @@ const fetchCategories = async () => {
   return data;
 };
 
-export default function GamePlay() {
+export default function GameDetail() {
   const { gameCode } = useParams();
   const navigate = useNavigate();
 

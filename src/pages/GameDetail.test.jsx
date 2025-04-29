@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
-import GamePlay from "./GamePlay";
+import GameDetail from "./GameDetail";
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -9,7 +9,7 @@ jest.mock("react-router-dom", () => ({
   useNavigate: jest.fn(),
 }));
 
-describe("GamePlay Component", () => {
+describe("GameDetail Component", () => {
   let mockNavigate;
 
   beforeEach(() => {
@@ -22,10 +22,10 @@ describe("GamePlay Component", () => {
     jest.clearAllMocks();
   });
 
-  it("renders the GamePlay component correctly", () => {
+  it("renders the GameDetail component correctly", () => {
     render(
       <MemoryRouter>
-        <GamePlay />
+        <GameDetail />
       </MemoryRouter>
     );
 
@@ -36,7 +36,7 @@ describe("GamePlay Component", () => {
   it("calls launch game API with gameCode", () => {
     render(
       <MemoryRouter>
-        <GamePlay />
+        <GameDetail />
       </MemoryRouter>
     );
 
@@ -46,7 +46,7 @@ describe("GamePlay Component", () => {
   it("calls navigate when clicking 'Back to Games'", () => {
     render(
       <MemoryRouter>
-        <GamePlay />
+        <GameDetail />
       </MemoryRouter>
     );
 
