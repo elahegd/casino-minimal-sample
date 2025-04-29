@@ -55,6 +55,7 @@ First, install Deno using the instructions for your operating system:
 
 ```bash
 deno run --watch --allow-net mock/mock-api.js
+```
 
 
 ### Login
@@ -62,9 +63,8 @@ Path: /login
 
 You can use the following account to log in:
 
-```
+```bash
 username: alex
 password: xela
-
 ```
 
